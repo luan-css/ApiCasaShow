@@ -1,0 +1,41 @@
+@model IEnumerable<eventos.Models.Casa>
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="container-fluid">
+<h2>Casa</h2>
+<hr/>
+<a asp-action="NovaCasa" asp-controller="Gestao" class="btn btn-success">Criar nova casa</a>
+<hr/> 
+<script>
+    $(document).ready( function () {
+    $('#casa').DataTable();
+} );
+</script>
+<table id="casa" class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>Acões</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var casa in  Model){
+            <tr>
+                <td>@casa.Id</td>
+                <td>@casa.Nome</td>
+                <td>@casa.Endereco</td>
+                <td>
+                    <a class="btn btn-primary" href="/Gestao/EditarCasa/@casa.Id">Editar</a>
+                        <form asp-action="Deletar" asp-controller="Casas" style="display:inline">
+                        <input type="hidden" name="id" id="id" value="@casa.Id">
+                    <button class="btn btn-danger">Deletar</button>
+                    </form>
+                </td>
+            </tr>
+        } 
+    </tbody>
+</table>
+</div>

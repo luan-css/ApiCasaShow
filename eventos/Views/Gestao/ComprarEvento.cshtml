@@ -1,0 +1,85 @@
+@model eventos.DTO.EventoDTO
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Eventos</title>
+
+    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="~/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <script src="~/js/compra.js"></script>
+    <link href="~/css/sb-admin.css" rel="stylesheet">
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+
+<script>function calcular() {
+  var n1 = parseInt(document.getElementById('n1').value, 10);
+  var n2 = parseInt(document.getElementById('n2').value, 10);
+  document.getElementById('resultado').innerHTML = n1 * n2;
+}
+</script>
+</head>
+
+<body id="page-top">
+ <div class="container-fluid">
+<h3>Comprar Evento</h3>
+<hr/>
+
+<style type="text/css">
+label{
+  font-size: 17px;
+  font-weight: bold;
+  }
+  #botao{
+	background: #669851;
+	color: black;
+	border: 1px solid black;
+  height: 32px;
+  width: 79px;
+  font-weight: bold;
+  border-radius: 30px;
+	}
+	#botao:hover{
+	cursor: pointer;
+	background: black;
+  color: white;
+	}
+</style>
+<form class="form-horizontal" style="width: 35%;float: left;" asp-controller="Eventos" asp-action="SalvarEstoque" method="POST">
+    <input type="hidden" asp-for="Id">
+    <label asp-for="Nome">Nome</label>
+    <input type="text" asp-for="Nome" class="form-control" style="border: none; background-color: white;outline-style: none;outline-width: medium;outline: none;box-shadow: none;"readonly>
+    <input id="teste" type="hidden" asp-for="capacidade" class="form-control" style="border: none; background-color: white;outline-style: none;outline-width: medium;outline: none;box-shadow: none;" readonly>
+    <label asp-for="Data">Data</label>
+    <input asp-for="Data" class="form-control" style="border: none; background-color: white;outline-style: none;outline-width: medium;outline: none; box-shadow: none;" readonly>
+    <input type="hidden" asp-for="Imagem" class="form-control" >
+    <label asp-for="ValorIngresso">Valor do ingresso</label>
+    <input type="number" id="n1" asp-for="ValorIngresso" class="form-control"placeholder="Preço" style="width: 31%;border: none; background-color: 
+    white;outline-style: none; outline-width: medium;outline: none;box-shadow: none;" readonly>
+    <label asp-for="Quantidade">Quantidade</label>
+    <input value="0" id="n2" onblur="calcular()" type="number" min="1" max="@Model.capacidade" asp-for="Quantidade" class="form-control" style=" width: 31%;" placeholder="Quantidade"><button id="botao"  type="button">Calcular</button><br>
+    <span asp-validation-for="Quantidade"></span>  
+    <p style="font-weight: bold;">Total: R$<span id="resultado"></span></p>
+    <label asp-for="usuario">Usuario</label>
+    <input type="text" value="@User.Identity.Name" class="form-control" style=" width: 31%;" readonly>
+    <span asp-validation-for="usuario"></span><br/>
+    <button class="btn btn-success" >Comprar</button>
+</form>
+
+<div style="border: solid 2px black;float: right; width: 64%;height:466px"><img src="@Html.DisplayFor(Model => Model.Imagem)" width="100%" height="100%"/></div>
+</div>
+<hr>
+  <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="~/js/sb-admin.min.js"></script>
+</body>
+</html>

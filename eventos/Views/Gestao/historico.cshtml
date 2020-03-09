@@ -1,0 +1,48 @@
+@model IEnumerable<eventos.Models.Compra>
+@{
+    Layout = "_LayoutAdmin";
+}
+<style type="text/css">
+    .botao{
+	background: #3F51B5;
+	color: #fff;
+	border: 2px solid black;
+    height: 54px;
+    width: 101px;
+	}
+	.botao:hover{
+	cursor: pointer;
+	background: black;
+	}
+    .titulos{ text-align: center;background-color: #343a40; color: white;}
+
+    .botao1{
+	background: #B00000;
+	color: #fff;
+	border: 2px solid black;
+    height: 54px;
+    width: 101px;
+	}
+	.botao1:hover{
+	cursor: pointer;
+	background: black;
+	}
+</style>
+<div class="container-fluid" style="margin-top: 10px; text-align: center; ">      
+<h2 class="titulos" style="text-align: center; margin-bottom: 50px;">Historico</h2>
+    @foreach(var compra in  Model){
+
+    @if(compra.usuario == User.Identity.Name){
+    <div class="card" style="width: 35rem;margin-bottom: 26px;float:left; margin-left: 179px; border:4px solid; margin-top: 10px;">
+    <img class="card-img-top" style="height: 293px;" src=@compra.imagem alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">@compra.Nome</h5>
+        <h5 class="card-title">@compra.Quantidade Comprados</h5>
+        <h5 class="card-title">Comprado por @compra.usuario</h5>
+        <h5 class="card-title"><strong></strong>@compra.total.ToString("C")</h5>        
+        </div>
+    </div>
+    }
+}
+<script src="~/js/compra.js"></script>
+</div>

@@ -1,0 +1,36 @@
+@model IEnumerable<eventos.Models.Casa>
+@{
+    Layout = "_LayoutAdmin";
+}
+<style type="text/css">
+    	#botao{
+	background: #cc0000;
+	color: black;
+	border: 2px solid black;
+    height: 54px;
+    width: 101px;
+    font-weight: bold;
+	}
+	#botao:hover{
+	cursor: pointer;
+	background: black;
+    color: white;
+	}
+    .botao1{
+	background: #5cf262;
+	color: black;
+	border: 2px solid black;
+    height: 54px;
+    width: 110px;
+    font-weight: bold;
+	}
+	.botao1:hover{
+	cursor: pointer;
+	background: black;
+    color: white;
+	}
+</style>
+<h1 style="margin-left: 16%;">Você precisa cadastrar uma casa ou um genero antes de cadastrar um evento</h1>
+<a style="margin-left: 44%;" href="/Gestao/Eventos"><input type="submit" value="Voltar" id="botao"></a>
+<a href="/Gestao/NovaCasa"><input type="submit" value="Criar Casa" class="botao1"></a>
+<a href="/Gestao/NovoGenero"><input type="submit" value="Criar Genero" class="botao1"></a>

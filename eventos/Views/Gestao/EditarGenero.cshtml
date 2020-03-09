@@ -1,0 +1,14 @@
+@model eventos.DTO.GeneroDTO
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="container-fluid">
+<h3>Editar Genero</h3>
+<hr/>
+<form class="form-horizontal" asp-controller="Generos" asp-action="Atualizar" method="POST">
+    <input type="hidden" asp-for="Id">
+    <label asp-for="Nome">Nome</label>
+    <input type="text" asp-for="Nome" class="form-control" placeholder="Nome do genero">
+    <span asp-validation-for="Nome"></span><br/>
+    <button class="btn btn-success">Atualizar</button>
+</form></div>

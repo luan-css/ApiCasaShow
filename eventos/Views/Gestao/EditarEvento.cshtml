@@ -1,0 +1,31 @@
+@model eventos.DTO.EventoDTO
+
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="container-fluid">
+<h3>Editar Evento</h3>
+<hr/>
+<form class="form-horizontal" asp-controller="Eventos" asp-action="Atualizar" method="POST">
+    <input type="hidden" asp-for="Id">
+    <label asp-for="Nome">Nome</label>
+    <input type="text" asp-for="Nome" class="form-control" placeholder="Nome do evento">
+    <span asp-validation-for="Nome"></span><br/>
+    <label asp-for="capacidade">Capacidade</label>
+    <input type="number" asp-for="capacidade" class="form-control" placeholder="Capacidade no evento">
+    <span asp-validation-for="capacidade"></span><br/>
+    <label asp-for="capacidade">Data</label>
+    <input asp-for="Data" class="form-control" placeholder="Data e Hora do evento">
+    <span asp-validation-for="Data"></span><br/>
+    <label asp-for="capacidade">Imagem</label>
+    <input type="text" asp-for="Imagem" class="form-control" placeholder="Imagem do Artista ou do evento">
+    <span asp-validation-for="Imagem"></span><br/>
+    <label asp-for="GeneroID">Genero</label>
+    <select class="form-control" asp-for="GeneroID" asp-items='@(new SelectList(@ViewBag.Generos, "Id", "Nome"))'></select><br/>
+    <label asp-for="CasaID">Casa de show</label>
+    <select class="form-control" asp-for="CasaID" asp-items='@(new SelectList(@ViewBag.Casas, "Id", "Nome"))'></select><br/>
+    <label asp-for="ValorIngresso">Valor do ingresso</label>
+    <input asp-for="ValorIngresso" class="form-control" placeholder="Preço">
+    <span asp-validation-for="ValorIngresso"></span><br/>
+    <button class="btn btn-success">Atualizar</button>
+</form></div>

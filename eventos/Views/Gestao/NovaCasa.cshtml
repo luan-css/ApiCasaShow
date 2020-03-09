@@ -1,0 +1,17 @@
+@model eventos.DTO.CasaDTO
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="container-fluid">
+<h3>Nova Casa</h3>
+<hr/>
+<form class="form-horizontal" asp-controller="Casas" asp-action="Salvar" method="POST">
+    <input type="hidden" asp-for="Id" value="0">
+    <label asp-for="Nome">Nome</label>
+    <input maxlength="200" type="text" asp-for="Nome" class="form-control" placeholder="Nome da Casa">
+    <span asp-validation-for="Nome"></span><br/>
+    <label asp-for="Nome">Endereço</label>
+    <input maxlength="200" type="text" asp-for="Endereco" class="form-control" placeholder="Avenida, rua, local">
+    <span asp-validation-for="Endereco"></span><br/>
+    <button class="btn btn-success">Cadastrar</button>
+</form></div>
